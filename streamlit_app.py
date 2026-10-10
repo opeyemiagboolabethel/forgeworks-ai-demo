@@ -119,11 +119,30 @@ with desk:
     if collection=='Production shifts':
         if st.checkbox('Include shifts without exceptions'):
             records=copy.deepcopy(tools.state['shifts'])
-    frame=pd.DataFrame(records)
+    labels={'shift_id':'Shift','date':'Date','asset_id':'Asset','target_units':'Planned units','produced_units':'Produced units','rejected_units':'Rejected units','downtime_minutes':'Downtime · minutes','recorded_note':'Recorded issue','material_id':'Material ID','name':'Material','on_hand':'Stock on hand','quarantined':'Quarantined stock','daily_use':'Daily use','lead_time_days':'Supplier lead time · days','open_po':'Open purchase order','usable_stock':'Usable stock','days_cover':'Usable cover · days','risk':'Below lead-time cover','unit':'Unit','work_order_id':'Work order','priority':'Priority','issue':'Issue for review','status':'Status','created_at':'Created at','grid_kwh':'Grid · kWh','generator_kwh':'Generator · kWh','diesel_litres':'Diesel · litres','grid_ngn_per_kwh':'Grid rate · ₦/kWh','diesel_ngn_per_litre':'Diesel price · ₦/litre','cost_ngn':'Recorded energy cost · ₦','total_metered_kwh':'Total metered energy · kWh'}
+    frame=pd.DataFrame(records).rename(columns=labels)
     st.dataframe(frame,hide_index=True,width='stretch')
     st.download_button('Download displayed records',frame.to_csv(index=False),'forgeworks-records.csv','text/csv')
-    asset_id=st.selectbox('Inspect an asset',[a['asset_id'] for a in tools.state['assets']])
-    st.json(tools.inspect_asset(asset_id))
+    names={a['asset_id']:a['name'] for a in tools.state['assets']}
+    asset_id=st.selectbox('Inspect an asset',list(names),format_func=lambda key: f'{names[key]} · {key}')
+    evidence=tools.inspect_asset(asset_id)
+    asset=evidence['asset']
+    with st.container(border=True):
+        st.subheader(asset['name'])
+        st.caption(f"Asset {asset['asset_id']} · Responsible team: {asset['owner']}")
+        st.info(asset['condition'])
+        st.markdown('#### Maintenance work orders')
+        if evidence['work_orders']:
+            st.dataframe(pd.DataFrame(evidence['work_orders']).rename(columns=labels),hide_index=True,width='stretch')
+        else:
+            st.caption('No recorded maintenance work order for this asset.')
+        st.markdown('#### Related production shifts')
+        if evidence['related_shifts']:
+            st.dataframe(pd.DataFrame(evidence['related_shifts']).rename(columns=labels),hide_index=True,width='stretch')
+        else:
+            st.caption('No production shift records are associated with this asset in the demo period.')
+        with st.expander('View underlying record data'):
+            st.json(evidence)
 with lab:
     st.subheader('Turn a verified issue into a reviewed work-order draft.')
     st.caption('Administrative simulation only. No equipment is stopped, serviced or restarted. No technician is contacted.')
