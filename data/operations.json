@@ -1,0 +1,204 @@
+{
+  "as_of": "2026-10-10T09:00:00+01:00",
+  "period": "8\u20139 October 2026 \u00b7 six completed eight-hour shifts",
+  "revision": 0,
+  "actions": [],
+  "assets": [
+    {
+      "asset_id": "FW-A01",
+      "name": "Forming line 1",
+      "condition": "Vibration note under investigation",
+      "owner": "Maintenance team"
+    },
+    {
+      "asset_id": "FW-A02",
+      "name": "Forming line 2",
+      "condition": "Operational; temperature variation noted",
+      "owner": "Maintenance team"
+    },
+    {
+      "asset_id": "FW-A03",
+      "name": "Packing line",
+      "condition": "Operational; recurring label stoppage reported",
+      "owner": "Maintenance team"
+    },
+    {
+      "asset_id": "FW-A04",
+      "name": "Generator G1",
+      "condition": "Operational; service review due",
+      "owner": "Utilities team"
+    }
+  ],
+  "shifts": [
+    {
+      "shift_id": "FW-S001",
+      "date": "2026-10-08",
+      "asset_id": "FW-A01",
+      "target_units": 10000,
+      "produced_units": 8200,
+      "rejected_units": 328,
+      "downtime_minutes": 95,
+      "recorded_note": "Vibration noted; maintenance order open"
+    },
+    {
+      "shift_id": "FW-S002",
+      "date": "2026-10-08",
+      "asset_id": "FW-A02",
+      "target_units": 10000,
+      "produced_units": 9600,
+      "rejected_units": 192,
+      "downtime_minutes": 35,
+      "recorded_note": "Recorded material feed delay"
+    },
+    {
+      "shift_id": "FW-S003",
+      "date": "2026-10-08",
+      "asset_id": "FW-A03",
+      "target_units": 8000,
+      "produced_units": 8000,
+      "rejected_units": 80,
+      "downtime_minutes": 10,
+      "recorded_note": "Routine changeover"
+    },
+    {
+      "shift_id": "FW-S004",
+      "date": "2026-10-09",
+      "asset_id": "FW-A01",
+      "target_units": 10000,
+      "produced_units": 8800,
+      "rejected_units": 264,
+      "downtime_minutes": 70,
+      "recorded_note": "Recurring vibration note"
+    },
+    {
+      "shift_id": "FW-S005",
+      "date": "2026-10-09",
+      "asset_id": "FW-A02",
+      "target_units": 10000,
+      "produced_units": 10000,
+      "rejected_units": 150,
+      "downtime_minutes": 15,
+      "recorded_note": "Stable shift"
+    },
+    {
+      "shift_id": "FW-S006",
+      "date": "2026-10-09",
+      "asset_id": "FW-A03",
+      "target_units": 8000,
+      "produced_units": 7200,
+      "rejected_units": 288,
+      "downtime_minutes": 65,
+      "recorded_note": "Label stoppages reported"
+    }
+  ],
+  "materials": [
+    {
+      "material_id": "FW-M01",
+      "name": "PET resin",
+      "unit": "kg",
+      "on_hand": 8000,
+      "quarantined": 1200,
+      "daily_use": 2000,
+      "lead_time_days": 5,
+      "open_po": "PO-104 \u00b7 6000 kg \u00b7 receipt unconfirmed"
+    },
+    {
+      "material_id": "FW-M02",
+      "name": "Labels",
+      "unit": "rolls",
+      "on_hand": 420,
+      "quarantined": 0,
+      "daily_use": 60,
+      "lead_time_days": 4,
+      "open_po": "None"
+    },
+    {
+      "material_id": "FW-M03",
+      "name": "Cartons",
+      "unit": "units",
+      "on_hand": 9000,
+      "quarantined": 1000,
+      "daily_use": 3000,
+      "lead_time_days": 3,
+      "open_po": "PO-108 \u00b7 10000 units \u00b7 receipt unconfirmed"
+    },
+    {
+      "material_id": "FW-M04",
+      "name": "Caps",
+      "unit": "units",
+      "on_hand": 80000,
+      "quarantined": 0,
+      "daily_use": 15000,
+      "lead_time_days": 3,
+      "open_po": "None"
+    }
+  ],
+  "energy": [
+    {
+      "shift_id": "FW-S001",
+      "grid_kwh": 650,
+      "generator_kwh": 450,
+      "diesel_litres": 140,
+      "grid_ngn_per_kwh": 225,
+      "diesel_ngn_per_litre": 1350
+    },
+    {
+      "shift_id": "FW-S002",
+      "grid_kwh": 800,
+      "generator_kwh": 250,
+      "diesel_litres": 80,
+      "grid_ngn_per_kwh": 225,
+      "diesel_ngn_per_litre": 1350
+    },
+    {
+      "shift_id": "FW-S003",
+      "grid_kwh": 600,
+      "generator_kwh": 200,
+      "diesel_litres": 60,
+      "grid_ngn_per_kwh": 225,
+      "diesel_ngn_per_litre": 1350
+    },
+    {
+      "shift_id": "FW-S004",
+      "grid_kwh": 700,
+      "generator_kwh": 400,
+      "diesel_litres": 125,
+      "grid_ngn_per_kwh": 225,
+      "diesel_ngn_per_litre": 1350
+    },
+    {
+      "shift_id": "FW-S005",
+      "grid_kwh": 900,
+      "generator_kwh": 150,
+      "diesel_litres": 50,
+      "grid_ngn_per_kwh": 225,
+      "diesel_ngn_per_litre": 1350
+    },
+    {
+      "shift_id": "FW-S006",
+      "grid_kwh": 550,
+      "generator_kwh": 300,
+      "diesel_litres": 95,
+      "grid_ngn_per_kwh": 225,
+      "diesel_ngn_per_litre": 1350
+    }
+  ],
+  "work_orders": [
+    {
+      "work_order_id": "FW-WO-001",
+      "asset_id": "FW-A01",
+      "priority": "High",
+      "issue": "Investigate reported vibration using the approved maintenance process",
+      "status": "Open",
+      "created_at": "2026-10-09T08:00:00+01:00"
+    },
+    {
+      "work_order_id": "FW-WO-002",
+      "asset_id": "FW-A04",
+      "priority": "Normal",
+      "issue": "Review generator service record and arrange qualified inspection",
+      "status": "Open",
+      "created_at": "2026-10-09T08:30:00+01:00"
+    }
+  ]
+}
