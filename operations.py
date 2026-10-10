@@ -31,6 +31,8 @@ class FactoryTools:
                     good_attainment_pct=round((made-rejected)/target*100, 1),
                     reject_rate_pct=round(rejected/made*100, 2),
                     downtime_minutes=sum(s['downtime_minutes'] for s in shifts),
+                    downtime_scope='All six completed shifts, including shifts at target',
+                    below_target_downtime_minutes=sum(s['downtime_minutes'] for s in shifts if s['produced_units'] < s['target_units']),
                     below_target_shifts=sum(s['produced_units'] < s['target_units'] for s in shifts),
                     total_shifts=len(shifts), material_alerts=len(self.get_material_risks()['records']),
                     open_work_orders=sum(w['status']=='Open' for w in self.state['work_orders']),
